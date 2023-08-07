@@ -34,3 +34,7 @@ h1 {
   font-size: 14px;
   color: #888;
 }
+
+.loveLetter {
+  display: none;
+}
