@@ -83,7 +83,7 @@ const loveLetterElement = document.getElementById("loveLetter");
 
 function showLoveMessage() {
   const currentDate = new Date();
-const targetDate = new Date(currentDate.getFullYear(), 6, 10); // 7 représente le mois d'août (0-indexed)
+const targetDate = new Date(currentDate.getFullYear(), 6, 15); // 7 représente le mois d'août (0-indexed)
   const timeDiff = targetDate.getTime() - currentDate.getTime();
   const daysUntilAugust15 = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
   
@@ -144,12 +144,4 @@ function displayLoveMessage(day) {
   imageContainer.appendChild(imageElement);
   imageContainer.appendChild(commentElement);
 }
-
-function displayLoveMessage(day) {
-  const messageIndex = day - 1;
-  const message = loveMessages[messageIndex];
-  loveMessageElement.textContent = message;
-  daysLeftElement.textContent = `Jours restants: ${daysInLove - day + 1}`;
-}
-
 showLoveMessage();
