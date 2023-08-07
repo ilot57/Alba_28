@@ -145,4 +145,11 @@ function displayLoveMessage(day) {
   imageContainer.appendChild(commentElement);
 }
 
+function displayLoveMessage(day) {
+  const messageIndex = day - 1;
+  const message = loveMessages[messageIndex];
+  loveMessageElement.textContent = message;
+  daysLeftElement.textContent = `Jours restants: ${daysInLove - day + 1}`;
+}
+
 showLoveMessage();
