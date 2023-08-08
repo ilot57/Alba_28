@@ -83,11 +83,15 @@ const loveLetterElement = document.getElementById("loveLetter");
 
 function showLoveMessage() {
   const currentDate = new Date();
-const targetDate = new Date(currentDate.getFullYear(), 6, 25); // 7 représente le mois d'août (0-indexed)
+  const targetDate = new Date(currentDate.getFullYear(), 7, 8); // 7 représente le mois d'août (0-indexed)
   const timeDiff = targetDate.getTime() - currentDate.getTime();
   const daysUntilAugust15 = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+  const loveTitle = document.getElementById("loveTitle");
+  const memoryTitle = document.getElementById("memoryTitle");
+
   
-  if (daysUntilAugust15 <= 0) {
+  if (daysUntilAugust15 < 0) {
     const daysDiff = Math.abs(daysUntilAugust15);
     if (daysDiff >= daysInLove) {
       // Afficher la lettre d'amour et masquer le message aléatoire
@@ -105,11 +109,19 @@ const targetDate = new Date(currentDate.getFullYear(), 6, 25); // 7 représente 
       displayLoveMessage(daysDiff);
     }
   } else {
-    loveMessageElement.textContent = "Le compte à rebours commence le 16 août !";
-    daysLeftElement.textContent = `Jours restants: ${daysUntilAugust15}`;
-  }
+    loveMessageElement.textContent = `Hello Alba - To celebrate your birthday, I've put together something special – a temporary website just for you. Starting from August 28th, each day you'll receive a new reason why I love you, along with a cherished memory we've shared. The catch is, you'll need to visit the website every day to unveil the latest message and you won't be able to save the previous ones. It's a daily dose of love and a way to relive our moments together and discover why i love you.
 
-  
+    I hope this gift brings a smile to your face and adds a touch of excitement to your days. 
+    
+    Wishing you a fantastic 28th birthday my love. `;
+    daysLeftElement.textContent = `Jours restants: ${daysUntilAugust15 + 1}`;
+    // Cacher les titres "What I Love About You" et "Memory of the Day" dans la lettre d'amour de fin
+    const loveMessageTitle = document.querySelector(".message h2");
+    const memoryTitle = document.querySelector("#imageContainer h2");
+    loveMessageTitle.style.display = "none";
+    memoryTitle.style.display = "none";
+  }
+ 
 }
 
 function displayLoveMessage(day) {
@@ -144,4 +156,6 @@ function displayLoveMessage(day) {
   imageContainer.appendChild(imageElement);
   imageContainer.appendChild(commentElement);
 }
+
+
 showLoveMessage();
