@@ -2,7 +2,7 @@ const loveMessages = [
   {
     message: "You are my best friend, and I always want to talk to you when something happens in my life (bad or good). You are the person who knows me the most. I trust you with everything.",
     comment: "Te souviens-tu de la fois où nous sommes restés éveillés toute la nuit à discuter ? C'était l'un de mes moments préférés.",
-    imagePath: "image/day1.jpg"
+    imagePath: "images/day1.png"
   },
   {
     message: "You are so intelligent and cultured. You are such an interesting person, and I am never bored when I talk to you. I love our discussions about life, society, and politics.",
@@ -47,7 +47,7 @@ const loveMessages = [
   {
     message: "I love your sensitivity even if you struggle with it sometimes. It makes you who you are, and even though it can be overwhelming sometimes, I think it makes you a better and stronger person.",
     comment: "Te souviens-tu de la fois où nous sommes restés éveillés toute la nuit à discuter ? C'était l'un de mes moments préférés.",
-    imagePath: "images/day10.jpg"
+    imagePath: "images/day10.jpeg"
   },
   {
     message: "Your voice is amazing. I always get emotional hearing you sing with your sister at Burns Night. Some of the most relaxing nights I've had were when you used to sing me to sleep in Glasgow. It made me fall for you even more.",
@@ -62,12 +62,12 @@ const loveMessages = [
   {
     message: "I love that you are sociable and so likable. I am always so proud of presenting you to my friends and family. They all love you so much that it makes me love you even more.",
     comment: "Te souviens-tu de la fois où nous sommes restés éveillés toute la nuit à discuter ? C'était l'un de mes moments préférés.",
-    imagePath: "images/day13.jpg"
+    imagePath: "images/day13.jpeg"
   },
   {
     message: "I love traveling with you. The last trips we had together were some of the best memories I have. You are so easygoing, and we understand each other so much that it flows so naturally. We have so much fun together.",
     comment: "Te souviens-tu de la fois où nous sommes restés éveillés toute la nuit à discuter ? C'était l'un de mes moments préférés.",
-    imagePath: "images/day14.jpg"
+    imagePath: "images/day14.jpeg"
   },
   {
     message: "I am so happy you finally found a job that suits you and that they respect you as a human being. You deserve it so much! I would love to have you in my company.",
@@ -83,7 +83,7 @@ const loveLetterElement = document.getElementById("loveLetter");
 
 function showLoveMessage() {
   const currentDate = new Date();
-const targetDate = new Date(currentDate.getFullYear(), 6, 15); // 7 représente le mois d'août (0-indexed)
+const targetDate = new Date(currentDate.getFullYear(), 7, 2); // 7 représente le mois d'août (0-indexed)
   const timeDiff = targetDate.getTime() - currentDate.getTime();
   const daysUntilAugust15 = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
   
