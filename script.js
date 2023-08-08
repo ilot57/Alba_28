@@ -66,7 +66,7 @@ const loveMessages = [
   },
   {
   message: "I love traveling with you. The last trips we had together were some of the best memories I have. You are so easygoing, and we understand each other so much that it flows so naturally. We have so much fun together.",
-  comment: "06/04/2023 - Our Friends: A rare photo of all our friends from Barcelona. They all love you so much, and they're so happy for us. I'll miss them, and I'm sure you will too, but we'll find a way to see them from time to time.",
+  comment: "09/04/2023 - Our Friends: A rare photo of all our friends from Barcelona. They all love you so much, and they're so happy for us. I'll miss them, and I'm sure you will too, but we'll find a way to see them from time to time.",
   imagePath: "images/day14.jpeg"
   },
   {
@@ -83,7 +83,7 @@ const loveLetterElement = document.getElementById("loveLetter");
 
 function showLoveMessage() {
   const currentDate = new Date();
-const targetDate = new Date(currentDate.getFullYear(), 7, 8); // 7 représente le mois d'août (0-indexed)
+const targetDate = new Date(currentDate.getFullYear(), 6, 25); // 7 représente le mois d'août (0-indexed)
   const timeDiff = targetDate.getTime() - currentDate.getTime();
   const daysUntilAugust15 = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
   
