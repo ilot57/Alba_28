@@ -80,32 +80,62 @@ const daysInLove = 16;
 const loveMessageElement = document.getElementById("loveMessage");
 const daysLeftElement = document.getElementById("daysLeft");
 const loveLetterElement = document.getElementById("loveLetter");
+const currentDate = new Date();
+const targetDate = new Date(currentDate.getFullYear(), 7, 15); // 7 représente le mois d'août (0-indexed)
+const timeDiff = targetDate.getTime() - currentDate.getTime();
+const daysUntilAugust15 = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+const firstDayButton = document.getElementById("firstDayBtn");
+const BackToLoveLetter = document.getElementById("LoveLetterButton");
+
+firstDayButton.addEventListener("click", () => {
+  currentDay = 1;
+  displayLoveMessage(currentDay)
+});
+
+BackToLoveLetter.addEventListener("click", () => {
+  currentDay = daysInLove;
+  const existingImage1 = document.querySelector(".loveImage");
+  const existingComment1 = document.querySelector(".imageComment");
+  if (existingImage1) {
+    existingImage1.remove();
+  }
+  if (existingComment1) {
+    existingComment.remove();
+  }
+  showLoveMessage();
+});
 
 function showLoveMessage() {
-  const currentDate = new Date();
-  const targetDate = new Date(currentDate.getFullYear(), 7, 8); // 7 représente le mois d'août (0-indexed)
-  const timeDiff = targetDate.getTime() - currentDate.getTime();
-  const daysUntilAugust15 = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-
   const loveTitle = document.getElementById("loveTitle");
   const memoryTitle = document.getElementById("memoryTitle");
 
   
   if (daysUntilAugust15 < 0) {
     const daysDiff = Math.abs(daysUntilAugust15);
-    if (daysDiff >= daysInLove) {
+    if (currentDay >= daysInLove) {
       // Afficher la lettre d'amour et masquer le message aléatoire
       loveMessageElement.textContent = "That's it baby ! I hope you liked it and had a beautiful summer :). Here is a last message for you";
       daysLeftElement.style.display = "none";
       loveLetterElement.style.display = "block";
+      // Afficher le bouton "First Day" lorsque la love letter est affichée
+      firstDayButton.style.display = "inline-block";
+      BackToLoveLetter.style.display = "inline-block";
 
       // Cacher les titres "What I Love About You" et "Memory of the Day" dans la lettre d'amour de fin
       const loveMessageTitle = document.querySelector(".message h2");
       const memoryTitle = document.querySelector("#imageContainer h2");
       loveMessageTitle.style.display = "none";
       memoryTitle.style.display = "none";
+      prevDayButton.style.display = "none";
+      nextDayButton.style.display = "none";
+      
 
     } else {
+      prevDayButton.style.display = "inline-block";
+      nextDayButton.style.display = "inline-block";
+      // Masquer le bouton "First Day" lorsqu'un message aléatoire est affiché
+      firstDayButton.style.display = "none";
       displayLoveMessage(daysDiff);
     }
   } else {
@@ -120,11 +150,38 @@ function showLoveMessage() {
     const memoryTitle = document.querySelector("#imageContainer h2");
     loveMessageTitle.style.display = "none";
     memoryTitle.style.display = "none";
+    prevDayButton.style.display = "none";
+    nextDayButton.style.display = "none";
+    // Masquer le bouton "First Day" lorsqu'un message aléatoire est affiché
+    firstDayButton.style.display = "none";
+
   }
  
 }
 
+const prevDayButton = document.getElementById("prevDayBtn");
+const nextDayButton = document.getElementById("nextDayBtn");
+
+let currentDay = Math.abs(daysUntilAugust15); // Initial day
+const maxDay = Math.abs(daysUntilAugust15)-1; // Maximum number of days
+
+prevDayButton.addEventListener("click", () => {
+  if (currentDay > 0) {
+    currentDay--;
+    displayLoveMessage(currentDay);
+  }
+});
+
+nextDayButton.addEventListener("click", () => {
+  if (currentDay <= maxDay) {
+    currentDay++;
+    displayLoveMessage(currentDay);
+  }
+});
+
+
 function displayLoveMessage(day) {
+  console.log("Displaying day:", day); // Check the day value
   const messageIndex = day - 1;
   const message = loveMessages[messageIndex];
   loveMessageElement.textContent = message.message; // Utilisez message.message au lieu de message
@@ -141,15 +198,26 @@ function displayLoveMessage(day) {
   commentElement.textContent = message.comment;
   commentElement.className = "imageComment";
 
+  // Masquer la love letter lorsque vous affichez un message aléatoire
+  loveLetterElement.style.display = "none";
+
+  prevDayButton.style.display = "inline-block";
+  nextDayButton.style.display = "inline-block";
+  // Masquer le bouton "First Day" lorsqu'un message aléatoire est affiché
+  firstDayButton.style.display = "none";
+
 
   // Supprimer l'ancienne image et commentaire s'il y en a une
   const existingImage = document.querySelector(".loveImage");
   const existingComment = document.querySelector(".imageComment");
+  console.log("Existing image:", existingImage); // Check if it's found
+  console.log("Existing comment:", existingComment); // Check if it's found
+  console.log("Current day:", currentDay); // Check the day value
   if (existingImage) {
-    loveLetterElement.removeChild(existingImage);
+    existingImage.remove();
   }
   if (existingComment) {
-    loveLetterElement.removeChild(existingComment);
+    existingComment.remove();
   }
 
   const imageContainer = document.getElementById("imageContainer");
@@ -157,5 +225,5 @@ function displayLoveMessage(day) {
   imageContainer.appendChild(commentElement);
 }
 
-
+// Afficher le message pour le jour actuel au chargement initial
 showLoveMessage();
