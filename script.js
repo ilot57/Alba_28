@@ -67,7 +67,7 @@ const loveMessages = [
   {
   message: "I love traveling with you. The last trips we had together were some of the best memories I have. You are so easygoing, and we understand each other so much that it flows so naturally. We have so much fun together.",
   comment: "09/04/2023 - Our Friends: A rare photo of all our friends from Barcelona. They all love you so much, and they're so happy for us. I'll miss them, and I'm sure you will too, but we'll find a way to see them from time to time.",
-  imagePath: "images/day14.jpeg"
+  imagePath: "images/day14.JPEG"
   },
   {
   message: "I am so happy you finally found a job that suits you and that they respect you as a human being. You deserve it so much! I would love to have you in my company.",
