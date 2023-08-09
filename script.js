@@ -81,7 +81,7 @@ const loveMessageElement = document.getElementById("loveMessage");
 const daysLeftElement = document.getElementById("daysLeft");
 const loveLetterElement = document.getElementById("loveLetter");
 const currentDate = new Date();
-const targetDate = new Date(currentDate.getFullYear(), 3, 29); // 7 représente le mois d'août (0-indexed)
+const targetDate = new Date(currentDate.getFullYear(), 7, 10); // 7 représente le mois d'août (0-indexed)
 const timeDiff = targetDate.getTime() - currentDate.getTime();
 const daysUntilAugust15 = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
@@ -142,7 +142,7 @@ function showLoveMessage() {
       displayLoveMessage(daysDiff);
     }
   } else {
-    loveMessageElement.textContent = `Hello Alba - To celebrate your birthday, I've put together something special – a temporary website just for you. Starting from August 28th, each day you'll receive a new reason why I love you, along with a cherished memory we've shared. The catch is, you'll need to visit the website every day to unveil the latest message and you won't be able to save the previous ones. It's a daily dose of love and a way to relive our moments together and discover why i love you.
+    loveMessageElement.textContent = `Hello Alba - To celebrate your birthday, I've put together something special – a temporary website just for you. Starting from August 28th, each day you'll receive a new reason why I love you, along with a cherished memory we've shared. The catch is, you'll need to visit the website every day to unveil the latest message. It's a daily dose of love and a way to relive our moments together and discover why i love you.
 
     I hope this gift brings a smile to your face and adds a touch of excitement to your days. 
     
