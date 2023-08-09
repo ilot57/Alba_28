@@ -81,7 +81,7 @@ const loveMessageElement = document.getElementById("loveMessage");
 const daysLeftElement = document.getElementById("daysLeft");
 const loveLetterElement = document.getElementById("loveLetter");
 const currentDate = new Date();
-const targetDate = new Date(currentDate.getFullYear(), 6, 15); // 7 représente le mois d'août (0-indexed)
+const targetDate = new Date(currentDate.getFullYear(), 7, 7); // 7 représente le mois d'août (0-indexed)
 const timeDiff = targetDate.getTime() - currentDate.getTime();
 const daysUntilAugust15 = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
@@ -101,7 +101,7 @@ BackToLoveLetter.addEventListener("click", () => {
     existingImage1.remove();
   }
   if (existingComment1) {
-    existingComment.remove();
+    existingComment1.remove();
   }
   showLoveMessage();
 });
