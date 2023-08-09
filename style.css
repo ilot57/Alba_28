@@ -56,3 +56,19 @@ h1 {
 #LoveLetterButton {
   display: none;
 }
+
+/* Appliquer le style aux boutons */
+.button {
+  background-color: #e91e63;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #d81b60;
+}
