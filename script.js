@@ -81,7 +81,7 @@ const loveMessageElement = document.getElementById("loveMessage");
 const daysLeftElement = document.getElementById("daysLeft");
 const loveLetterElement = document.getElementById("loveLetter");
 const currentDate = new Date();
-const targetDate = new Date(currentDate.getFullYear(), 6, 7); // 7 représente le mois d'août (0-indexed)
+const targetDate = new Date(currentDate.getFullYear(), 3, 29); // 7 représente le mois d'août (0-indexed)
 const timeDiff = targetDate.getTime() - currentDate.getTime();
 const daysUntilAugust15 = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
@@ -92,6 +92,10 @@ firstDayButton.addEventListener("click", () => {
   currentDay = 1;
   displayLoveMessage(currentDay)
   BackToLoveLetter.style.display = "inline-block";
+  const loveMessageTitle = document.querySelector(".message h2");
+  const memoryTitle = document.querySelector("#imageContainer h2");
+  loveMessageTitle.style.display = "block";
+  memoryTitle.style.display = "block";
 });
 
 BackToLoveLetter.addEventListener("click", () => {
@@ -122,7 +126,7 @@ function showLoveMessage() {
       loveLetterElement.style.display = "block";
       // Afficher le bouton "First Day" lorsque la love letter est affichée
       firstDayButton.style.display = "inline-block";
-      BackToLoveLetter.style.display = "inline-block";
+      BackToLoveLetter.style.display = "non";
 
       // Cacher les titres "What I Love About You" et "Memory of the Day" dans la lettre d'amour de fin
       const loveMessageTitle = document.querySelector(".message h2");
@@ -131,12 +135,9 @@ function showLoveMessage() {
       memoryTitle.style.display = "none";
       prevDayButton.style.display = "none";
       nextDayButton.style.display = "none";
-      
-
+     
     } else {
-      prevDayButton.style.display = "inline-block";
-      nextDayButton.style.display = "inline-block";
-      // Masquer le bouton "First Day" lorsqu'un message aléatoire est affiché
+      nextDayButton.style.display = "none";
       firstDayButton.style.display = "none";
       displayLoveMessage(daysDiff);
     }
@@ -156,7 +157,6 @@ function showLoveMessage() {
     nextDayButton.style.display = "none";
     // Masquer le bouton "First Day" lorsqu'un message aléatoire est affiché
     firstDayButton.style.display = "none";
-
   }
  
 }
@@ -179,6 +179,7 @@ nextDayButton.addEventListener("click", () => {
     currentDay++;
     displayLoveMessage(currentDay);
   }
+
 });
 
 
@@ -203,8 +204,24 @@ function displayLoveMessage(day) {
   // Masquer la love letter lorsque vous affichez un message aléatoire
   loveLetterElement.style.display = "none";
 
-  prevDayButton.style.display = "inline-block";
-  nextDayButton.style.display = "inline-block";
+  //gestion affichage boutons next et previous
+
+  if (currentDay <= 1 ) {
+    prevDayButton.style.display = "none"; // Masquer le bouton "Previous"
+  } else {
+    prevDayButton.style.display = "inline-block"; // Afficher le bouton "Previous" sinon
+  }
+
+  if (currentDay >= 15 || currentDay > maxDay) {
+    nextDayButton.style.display = "none"; // Masquer le bouton "Next"
+  } else {
+    nextDayButton.style.display = "inline-block"; // Afficher le bouton "Next" sinon
+  }
+  
+
+  
+
+  
   // Masquer le bouton "First Day" lorsqu'un message aléatoire est affiché
   firstDayButton.style.display = "none";
 
@@ -215,6 +232,8 @@ function displayLoveMessage(day) {
   console.log("Existing image:", existingImage); // Check if it's found
   console.log("Existing comment:", existingComment); // Check if it's found
   console.log("Current day:", currentDay); // Check the day value
+  console.log("MaxDay:", maxDay); // Check the day value
+  console.log("DaysuntilAugust:", daysUntilAugust15)
   if (existingImage) {
     existingImage.remove();
   }
