@@ -81,7 +81,7 @@ const loveMessageElement = document.getElementById("loveMessage");
 const daysLeftElement = document.getElementById("daysLeft");
 const loveLetterElement = document.getElementById("loveLetter");
 const currentDate = new Date();
-const targetDate = new Date(currentDate.getFullYear(), 6, 31); // 7 représente le mois d'août (0-indexed)
+const targetDate = new Date(currentDate.getFullYear(), 7, 16); // 7 représente le mois d'août (0-indexed)
 const timeDiff = targetDate.getTime() - currentDate.getTime();
 const daysUntilAugust15 = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
@@ -182,6 +182,7 @@ nextDayButton.addEventListener("click", () => {
 
 });
 
+const videoDays = [7, 9, 10, 11, 13]; // Jours où vous voulez afficher une vidéo
 
 function displayLoveMessage(day) {
   console.log("Displaying day:", day); // Check the day value
@@ -240,10 +241,35 @@ function displayLoveMessage(day) {
   if (existingComment) {
     existingComment.remove();
   }
+  
+  // Masquer toutes les vidéos
+  const videos = document.querySelectorAll(".loveVideo");
+  videos.forEach(video => {
+    video.classList.add("hidden");
+    video.pause();
+  });
 
+  if (videoDays.includes(day)) {
+    const videoElement = document.getElementById(`videoDay${day}`);
+    const existingImage = document.querySelector(".loveImage");
+    const existingComment = document.querySelector(".imageComment");
+    
+    // Cacher toutes les vidéos
+    const videos = document.querySelectorAll(".loveVideo");
+    videos.forEach(video => {
+      video.classList.add("hidden");
+      video.pause();
+    });
+
+    videoElement.classList.remove("hidden");
+    //videoElement.play();
+  }
   const imageContainer = document.getElementById("imageContainer");
   imageContainer.appendChild(imageElement);
   imageContainer.appendChild(commentElement);
+
+
+  
 }
 
 // Afficher le message pour le jour actuel au chargement initial
