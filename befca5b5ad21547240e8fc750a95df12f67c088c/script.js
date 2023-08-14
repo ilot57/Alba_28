@@ -27,7 +27,7 @@ const loveMessages = [
   {
   message: "You are so good at making gifts, and you know how to make people feel so special (which I am not). I just found the 'Yacine's manual' you made me for our first birthday together! I laughed so much reading it again, and it made me want to cuddle you so much.",
   comment: "17/08/2019 - Ich bin ein Berliner: Our first trip together in Berlin for your 24th birthday. As you remember, it didn't start as planned because you missed one flight and got overbooked on another... So you had to spend the night alone in an airport hotel for your birthday... But once you got there, we had such a wonderful weekend in the frenetic Berlin. I had booked a 5-star hostel thanks to Airbus' CE, and that was pretty cool, haha.",
-  imagePath: "images/day6.jpg"
+  imagePath: "images/day6.png"
   },
   {
   message: "You are the most beautiful creature. I love everything from your hair to your toes. I feel so attracted to you and find you even more beautiful every day I spend with you. I am the luckiest man.",
@@ -81,7 +81,7 @@ const loveMessageElement = document.getElementById("loveMessage");
 const daysLeftElement = document.getElementById("daysLeft");
 const loveLetterElement = document.getElementById("loveLetter");
 const currentDate = new Date();
-const targetDate = new Date(currentDate.getFullYear(), 7, 12); // 7 représente le mois d'août (0-indexed)
+const targetDate = new Date(currentDate.getFullYear(), 6, 31); // 7 représente le mois d'août (0-indexed)
 const timeDiff = targetDate.getTime() - currentDate.getTime();
 const daysUntilAugust15 = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
