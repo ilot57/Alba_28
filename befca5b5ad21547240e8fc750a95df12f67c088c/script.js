@@ -81,12 +81,15 @@ const loveMessageElement = document.getElementById("loveMessage");
 const daysLeftElement = document.getElementById("daysLeft");
 const loveLetterElement = document.getElementById("loveLetter");
 const currentDate = new Date();
-const targetDate = new Date(currentDate.getFullYear(), 7, 16); // 7 représente le mois d'août (0-indexed)
+const targetDate = new Date(currentDate.getFullYear(), 6, 4); // 7 représente le mois d'août (0-indexed)
 const timeDiff = targetDate.getTime() - currentDate.getTime();
 const daysUntilAugust15 = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
 const firstDayButton = document.getElementById("firstDayBtn");
 const BackToLoveLetter = document.getElementById("LoveLetterButton");
+
+const finalImage = document.getElementById("finalImage");
+finalImage.style.display = "none";
 
 firstDayButton.addEventListener("click", () => {
   currentDay = 1;
@@ -116,7 +119,6 @@ function showLoveMessage() {
   const loveTitle = document.getElementById("loveTitle");
   const memoryTitle = document.getElementById("memoryTitle");
 
-  
   if (daysUntilAugust15 < 0) {
     const daysDiff = Math.abs(daysUntilAugust15);
     if (currentDay >= daysInLove) {
@@ -135,6 +137,10 @@ function showLoveMessage() {
       memoryTitle.style.display = "none";
       prevDayButton.style.display = "none";
       nextDayButton.style.display = "none";
+
+      //afficher dernière image
+      
+      finalImage.style.display = "block"; // Affichez l'image finale
      
     } else {
       nextDayButton.style.display = "none";
@@ -171,6 +177,7 @@ prevDayButton.addEventListener("click", () => {
   if (currentDay > 0) {
     currentDay--;
     displayLoveMessage(currentDay);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Faites défiler vers le haut en douceur
   }
 });
 
@@ -178,6 +185,7 @@ nextDayButton.addEventListener("click", () => {
   if (currentDay <= maxDay) {
     currentDay++;
     displayLoveMessage(currentDay);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Faites défiler vers le haut en douceur
   }
 
 });
@@ -190,6 +198,8 @@ function displayLoveMessage(day) {
   const message = loveMessages[messageIndex];
   loveMessageElement.textContent = message.message; // Utilisez message.message au lieu de message
   daysLeftElement.textContent = `Days left: ${daysInLove - day}`;
+
+  finalImage.style.display = "none"; // cacher image finale. 
 
   // Charger et afficher l'image
   const imageElement = document.createElement("img");

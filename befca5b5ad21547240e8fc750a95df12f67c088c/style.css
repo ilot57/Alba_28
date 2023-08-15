@@ -79,3 +79,10 @@ h1 {
   height: auto;
   margin: 10px auto;
 }
+
+#finalImage {
+  max-width: 100%; /* Ajustez la largeur de l'image */
+  max-height: 75vh;
+  height: auto;
+  margin: 20px auto;
+}
